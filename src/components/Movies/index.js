@@ -2,22 +2,22 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from "../MovieDetails/index";
 
 //function Movies({ movies: { id, title, description } }) {
-function Movies(props) {
+function Movies({ movies }) {
   return (
     <div className="comp orange">
       <h1>Movies Component</h1>
       <nav>
         <ul>
-          {props.movies.map((item) => (
+          {movies.map((item) => (
             <li>
-              <NavLink to="/movies/{item.id}">{item.id}</NavLink>
+              <NavLink to={`/movies/${item.id}`}>{item.id}</NavLink>
             </li>
           ))}
         </ul>
       </nav>
       <Switch>
         <Route path="/movies/:movieId">
-          <MovieDetails />
+          <MovieDetails movies={movies} />
         </Route>
       </Switch>
     </div>
